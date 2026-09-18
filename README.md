@@ -58,8 +58,6 @@ cd simple-calculator-C-
 
 Compile the code:
 
-
-
 g++ Main.cpp -o calculator
 
 
@@ -73,3 +71,5 @@ Linux / macOS:
 Windows:
 
 calculator.exe
+
+
