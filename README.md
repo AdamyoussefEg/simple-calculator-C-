@@ -1,25 +1,26 @@
 # 🧮 Simple C++ Calculator
 
-A lightweight, object-oriented calculator implemented in **C++**. This project demonstrates fundamental **Object-Oriented Programming (OOP)** concepts such as encapsulation, state management, methods, and basic error handling.
+A simple and lightweight **C++ Calculator** built using **Object-Oriented Programming (OOP)** concepts.
+
+The project provides basic arithmetic operations while maintaining the calculator's current value and the last performed action.
 
 ## ✨ Features
 
-* ➕ **Addition** — Add a value to the current result.
-* ➖ **Subtraction** — Subtract a value from the current result.
-* ✖️ **Multiplication** — Multiply the current result by a value.
-* ➗ **Division** — Divide the current result by a value.
-* 🛡️ **Division-by-Zero Protection** — Prevents invalid division operations without crashing.
-* 📊 **State Tracking** — Maintains the current calculator result.
-* 📝 **Action Tracking** — Keeps track of the last operation performed.
-* 🔄 **Clear / Reset** — Resets the calculator result back to `0`.
-* 🧱 **OOP Design** — Uses a dedicated calculator class to encapsulate functionality and state.
+* ➕ **Addition** — Adds a number to the current result.
+* ➖ **Subtraction** — Subtracts a number from the current result.
+* ✖️ **Multiplication** — Multiplies the current result by a number.
+* ➗ **Division** — Divides the current result by a number.
+* 🛡️ **Division by Zero Protection** — Prevents the program from crashing when dividing by zero.
+* 🔄 **Clear** — Resets the calculator value to `0`.
+* 📊 **Result Tracking** — Displays the current result after every operation.
+* 🧱 **OOP Design** — Calculator functionality is organized inside the `clsCalculator` class.
 
 ## 🛠️ Technologies
 
 * **C++**
-* **Object-Oriented Programming**
-* **Standard C++ Library**
-* **g++ / GCC**, **Clang**, or **MSVC**
+* **Object-Oriented Programming (OOP)**
+* **C++ Standard Library**
+* **g++ / GCC**
 
 ## 📂 Project Structure
 
@@ -27,86 +28,125 @@ A lightweight, object-oriented calculator implemented in **C++**. This project d
 simple-calculator-C-/
 │
 ├── Main.cpp
-├── clsCalculator.h
 └── README.md
 ```
 
-## 💻 Example Usage
+## 💻 Source Code
+
+The calculator is implemented using the `clsCalculator` class.
+
+The class maintains:
+
+* `Number` — Stores the current calculator value.
+* `result` — Stores the description of the last performed action.
+
+Both variables are private, demonstrating **encapsulation**.
+
+The available operations are:
 
 ```cpp
-#include <iostream>
-#include "clsCalculator.h"
+Add(int N2)
+Subtract(int N2)
+Divide(int N2)
+Multiply(int N2)
+clear()
+PrintResult()
+```
 
-int main()
-{
-    clsCalculator calc;
+## 🚀 Example
 
-    calc.Add(100);
-    calc.PrintResult();
+The current `main()` function demonstrates a sequence of calculator operations:
 
-    calc.Subtract(20);
-    calc.PrintResult();
+```cpp
+int main() {
+    clsCalculator Calculator1;
 
-    calc.Divide(0);
-    calc.PrintResult();
+    Calculator1.Add(10);
+    Calculator1.PrintResult();
 
-    calc.Multiply(3);
-    calc.PrintResult();
+    Calculator1.Add(100);
+    Calculator1.PrintResult();
 
-    calc.clear();
-    calc.PrintResult();
+    Calculator1.Subtract(20);
+    Calculator1.PrintResult();
+
+    Calculator1.Divide(0);
+    Calculator1.PrintResult();
+
+    Calculator1.Divide(2);
+    Calculator1.PrintResult();
+
+    Calculator1.Multiply(3);
+    Calculator1.PrintResult();
+
+    Calculator1.clear();
+    Calculator1.PrintResult();
 
     return 0;
 }
 ```
 
-### Expected Output
+## 📊 Expected Output
 
 ```text
-Result After Adding 100 is 100
-Result After Subtracting 20 is 80
-Result After Dividing 0 is 80
-Result After Multiplying 3 is 240
+Result After Adding 10 is 10
+Result After Adding 100 is 110
+Result After Subtracting 20 is 90
+Result After Dividing 0 is 90
+Result After Dividing 2 is 45
+Result After Multiplying 3 is 135
 Result After Clear 0 is 0
 ```
 
-## 🧠 OOP Concepts Demonstrated
+The sequence above follows the operations currently implemented in `Main.cpp`.
+
+## 🧠 OOP Concepts
 
 ### Encapsulation
 
-The calculator's internal state is managed through the `clsCalculator` class rather than directly modifying variables from `main()`.
+The calculator's internal variables are declared as `private`, while operations are exposed through `public` methods. This keeps the calculator's internal state controlled by the class.
 
 ### State Management
 
-The calculator maintains a running result, allowing multiple operations to be performed sequentially.
+The calculator maintains a running value in the `Number` variable. Each operation changes this value based on the previous result.
 
 For example:
 
 ```text
-100 → -20 → ÷0 → ×3
-```
-
-Results in:
-
-```text
-100 → 80 → 80 → 240
+10
+↓
++ 100
+↓
+110
+↓
+- 20
+↓
+90
+↓
+÷ 2
+↓
+45
+↓
+× 3
+↓
+135
 ```
 
 ### Error Handling
 
-Division by zero is handled safely. When attempting:
+The `Divide()` method checks whether the provided number is `0`. This prevents an actual division-by-zero operation.
 
-```cpp
-calc.Divide(0);
-```
+### Resetting State
 
-the calculator keeps the previous result instead of performing an invalid operation.
+The `clear()` method resets the calculator's value to `0` and resets the action message.
 
-## 🚀 How to Build & Run
+## 🔧 How to Build & Run
 
 ### Prerequisites
 
-Make sure you have a C++ compiler installed:
+You need a C++ compiler installed on your computer.
+
+Supported compilers include:
 
 * GCC / g++
 * Clang
@@ -124,21 +164,15 @@ git clone https://github.com/AdamyoussefEg/simple-calculator-C-.git
 cd simple-calculator-C-
 ```
 
-### 3. Compile
+### 3. Compile the Program
 
-Using **g++**:
+Using `g++`:
 
 ```bash
 g++ Main.cpp -o calculator
 ```
 
-### 4. Run
-
-#### Linux / macOS
-
-```bash
-./calculator
-```
+### 4. Run the Program
 
 #### Windows
 
@@ -146,42 +180,31 @@ g++ Main.cpp -o calculator
 calculator.exe
 ```
 
-## 📌 Example Workflow
+#### Linux / macOS
 
-The calculator supports chained operations:
-
-```cpp
-clsCalculator calc;
-
-calc.Add(100);       // 100
-calc.Subtract(20);   // 80
-calc.Multiply(3);    // 240
-calc.Divide(4);      // 60
+```bash
+./calculator
 ```
 
-The result is maintained automatically between operations.
+## 📌 Project Purpose
 
-## 🔮 Future Improvements
+This project was created to practice fundamental **C++ Object-Oriented Programming concepts**, including:
 
-Possible extensions for the project include:
+* Classes
+* Objects
+* Encapsulation
+* Private and public members
+* Member functions
+* State management
+* Basic error handling
 
-* [ ] Modulus operation
-* [ ] Power operation
-* [ ] Square root
-* [ ] Operation history
-* [ ] Interactive command-line interface
-* [ ] Input validation
-* [ ] Unit tests
-* [ ] CMake build configuration
-* [ ] More detailed error reporting
-
-## 📄 License
-
-This project is open-source and available for educational and personal use.
 
 ## 👨‍💻 Author
 
-**AdamyoussefEg**
+**Adamyoussef**
 
-GitHub:
-https://github.com/AdamyoussefEg
+GitHub: [AdamyoussefEg](https://github.com/AdamyoussefEg)
+
+## 📄 License
+
+This project is available for educational and personal use.
